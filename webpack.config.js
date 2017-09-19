@@ -6,12 +6,16 @@ module.exports = {
 	entry: {
 		bundle:[
 			`${__dirname}/public/js/main.js`
+		],
+		vendor:[
+			`${__dirname}/lib/pixi.min.js`,
+			`${__dirname}/lib/phaser.min.js`
 		]
 	},
 	output: {
-		path: __dirname + '/build',
+		path: `${__dirname}/build`,
 		publicPath: '/build/',
-		filename: 'bundle.js'
+		filename: '[name].js'
 	},
 	module: {
 		rules:[
@@ -35,21 +39,28 @@ module.exports = {
 						loader: "css-loader"
 					}
 				]
+			},
+			{
+				test: /pixi.min.js/,
+				loader: 'script-loader'
+			},
+			{
+				test: /phaser.min.js/,
+				loader: 'script-loader'
 			}
 		]
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin()
+		// new webpack.HotModuleReplacementPlugin(),
+		// new webpack.NamedModulesPlugin()
 	],
 	resolve:{
 		extensions: ['.js']
 	},
 	devServer: {
-		contentBase: path.resolve(__dirname, 'build'),
+		contentBase: path.resolve(__dirname, "build"),
 		port: 8080,
-		inline: true,
-		hot: true,
+		inline: true
 		// historyApiFallback: true
 	}
 }
