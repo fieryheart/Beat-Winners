@@ -15,3 +15,25 @@ describe('flowRight', function(){
         done();
     })
 });
+
+describe("getAllBlocks", function(){
+    it('get the number of animation frames', function(done){
+        let circles = [
+            {
+                blocks: 72
+            },
+            {
+                blocks: 48
+            },
+            {
+                blocks: 24
+            }
+        ];
+        let fromZero = _.reduce(0);
+        let addFromZero = fromZero(_.add);
+        let getBlocks = _.getKey('blocks');
+        let blocks = _.flowRight(addFromZero, _.map(getBlocks))(circles);
+        expect(blocks).to.be.equal(144);
+        done();
+    })
+})
