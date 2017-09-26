@@ -1,5 +1,6 @@
 import {circlePoints} from './points.js';
 import _ from './utils.js';
+import {drawLine} from './draw.js';
 
 export default function(game){
     const ctx = this;
@@ -21,7 +22,7 @@ export default function(game){
     
 
     const load = {
-        circles: [],    // 每一圈的进度数
+        progress: 0,    // 每一圈的进度数
         graphics: {},   // 画板
         loadingFrames: []   // 动画帧集合
     }
@@ -37,6 +38,9 @@ export default function(game){
         return new LoadingFrame(start, end, config);
     }
 
+
+
+    // 预先加载
     ctx.preload = function(){
 
         let l = this.add.group();
@@ -116,6 +120,23 @@ export default function(game){
         load.loadingFrames = pushConfig;
         console.log(load);
 
+    }
+
+    // 持续动画
+    ctx.update = function(){
+            
+            let i = load.progress;
+            drawLine(
+                load.graphics, 
+                load.loadingFrames[i][0],   // 起点
+                load.loadingFrames[i][1],   // 终点
+                load.loadingFrames[i][2]    // 线配置
+            )
+            load.progress++;
+            if(load.progress === load.loadingFrames.length) {
+                load.progress = 0;
+                load.graphics.clear();
+            }
     }
 
 }
