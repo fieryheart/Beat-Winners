@@ -1,3 +1,7 @@
+/*
+  计算得到各种图形的坐标
+*/
+
 import _ from './utils.js';
 
 const Coordinate2D = function(x, y){

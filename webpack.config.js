@@ -41,6 +41,10 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.(png|jpg)$/,
+				loader: 'file-loader?limit=8192&name=images/[name].[ext]'
+			},
+			{
 				test: /pixi.min.js/,
 				loader: 'script-loader'
 			},
@@ -60,7 +64,13 @@ module.exports = {
 	devServer: {
 		contentBase: path.resolve(__dirname, "build"),
 		port: 8080,
-		inline: true
+		inline: true,
+		headers:{
+			"Access-Control-Allow-Origin": "*",
+			"Access-Control-Allow-Credentials": "true",
+			"Access-Control-Allow-Headers": "Content-Type, Authorization, x-id, Content-Length, X-Requested-With",
+			"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
+		}
 		// historyApiFallback: true
 	}
 }

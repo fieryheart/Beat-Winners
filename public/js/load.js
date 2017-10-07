@@ -2,6 +2,7 @@ import {circlePoints} from './points.js';
 import _ from './utils.js';
 import {drawLine} from './draw.js';
 
+
 export default function(game){
     const ctx = this;
     // const map = _.map;
@@ -114,12 +115,21 @@ export default function(game){
         // 函数式构造一整个动画
         let setLine = curry((start, end, config) => [start, end, config]);
         // loading所有点对象
-        let pushOut = outCirclePoints.map((p) => setLine(p));
-        let pushIn = inCirclePoints.map((p, i) => pushOut[i](p));
-        let pushConfig = pushIn.map((f) => f(defaultFrameConfig));
-        load.loadingFrames = pushConfig;
+        let addOut = outCirclePoints.map((p) => setLine(p));
+        let addIn = inCirclePoints.map((p, i) => addOut[i](p));
+        let addConfig = addIn.map((f) => f(defaultFrameConfig));
+
+
+        load.loadingFrames = addConfig;
         console.log(load);
 
+
+        // ctx.load 加载文件
+        // ctx.load.image('bg', '../images/bg.png');
+
+
+        // graphics destroy
+        // load.loadingFrames.destroy()
     }
 
     // 持续动画

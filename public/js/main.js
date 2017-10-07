@@ -3,13 +3,13 @@ import  {displayScale} from './screen.js';
 import States from './states.js';
 
 // 测试
-const test = 1;
+const dev = 1;
 
 // 游戏对象配置项
 const game = new Map();
-if(test) {
-    game.set("width", 480);
-    game.set("height", game.get("width") / displayScale.get("test") );
+if(dev) {
+    game.set("height", 540);
+    game.set("width", game.get("height") * displayScale.get("dev"));
 }
 
 // 游戏实例
@@ -20,7 +20,10 @@ const states = new States();
 
 // 添加场景
 app.state.add('load', states.load);
+app.state.add('menu', states.menu);
 
-app.state.start('load');
+// 进入场景
+// app.state.start('load');
+app.state.start('menu');
 
-console.log("very good");
+console.log('%cinit!','background:#fff;color:#0000ff');
