@@ -45,6 +45,10 @@ module.exports = {
 				loader: 'file-loader?limit=8192&name=images/[name].[ext]'
 			},
 			{
+				test: /\.xml$/,
+				loader: 'file-loader?limit=8192&name=xml/[name].[ext]'
+			},
+			{
 				test: /pixi.min.js/,
 				loader: 'script-loader'
 			},

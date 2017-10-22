@@ -3,6 +3,7 @@
 const Koa = require('koa');
 const router = require('koa-router')();
 const views = require('koa-views');
+const GameController = require('./server/index.js');
 
 //
 const app = new Koa();
@@ -19,6 +20,8 @@ app.use(views(__dirname + '/views', {
 router.get('/', async (ctx, next) => {
 	await ctx.render('index');
 });
+
+router.get('/getDanmaku', GameController.getDanmaku);
 
 app.use(router.routes());
 
