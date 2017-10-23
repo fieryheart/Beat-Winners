@@ -94,10 +94,6 @@ export default function(game) {
         time = gameSet.time;
         clockT = ctx.add.bitmapText(ga.w/2, ga.h/2, "nokia", time.toString(), 16);
         clockT.anchor.set(.5);
-        
-        // 计时器
-        clockS = ctx.time.events;
-        clockS.loop(Phaser.Timer.SECOND, updateCounter, this)
 
         // 部署弹幕
         dMap = Array.from(Array(100),(v, k) => v = []);
@@ -107,7 +103,29 @@ export default function(game) {
         DanmakuControl.getDanmaku().then(function(res){
           return res.text();
         }).then(function(val) {
-          console.log(val);
+
+          // 计时器
+          clockS = ctx.time.events;
+          clockS.loop(Phaser.Timer.SECOND, updateCounter, this)
+          
+          let danmakus = JSON.parse(val);
+
+          danmakus.forEach(function(d, i){
+            danmakus[i].position = {
+              x: d.positionX,
+              y: d.positionY
+            };
+            danmakus[i].velocity = {
+              x: d.velocityX,
+              y: d.velocityY
+            }
+          })
+          
+          // 填充弹幕组
+          danmakus.forEach(function(d){
+            let time = d.time;
+            dMap[time-1].push(d);
+          })
         })
 
         // let danmakus = json.data;
@@ -116,9 +134,6 @@ export default function(game) {
         //     dMap[time-1].push(d);
         // })
         // console.log(dMap);
-
-
-
 
 
         // 弹幕
