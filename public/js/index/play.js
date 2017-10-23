@@ -1,9 +1,9 @@
-import "../images/clouds.png";
-import "../images/sun.png";
-import "../images/player.png";
-import json from "./json.js";
-import "../assets/fonts/nokia.png";
-import "../assets/fonts/nokia.xml";
+import "../../images/clouds.png";
+import "../../images/sun.png";
+import "../../images/player.png";
+import DanmakuControl from "./fetch.js";
+import "../../assets/fonts/nokia.png";
+import "../../assets/fonts/nokia.xml";
 
 const devURL = "http://127.0.0.1:8080/build/";
 
@@ -101,12 +101,21 @@ export default function(game) {
 
         // 部署弹幕
         dMap = Array.from(Array(100),(v, k) => v = []);
-        let danmakus = json.data;
-        danmakus.forEach(function(d){
-            let time = d.time;            
-            dMap[time-1].push(d);
+
+
+        // 获取弹幕数据
+        DanmakuControl.getDanmaku().then(function(res){
+          return res.text();
+        }).then(function(val) {
+          console.log(val);
         })
-        console.log(dMap);
+
+        // let danmakus = json.data;
+        // danmakus.forEach(function(d){
+        //     let time = d.time;            
+        //     dMap[time-1].push(d);
+        // })
+        // console.log(dMap);
 
 
 
@@ -115,8 +124,6 @@ export default function(game) {
         // 弹幕
         dGroup = ctx.add.group();
 
-
-        console.log(json);
         // 观察碰撞体积
         game.physics.startSystem(Phaser.Physics.ARCADE);
 

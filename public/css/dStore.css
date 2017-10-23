@@ -1,0 +1,102 @@
+body,p,ul,li {
+    padding: 0;
+    margin: 0;
+}
+
+#bg {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: #000;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+section {
+    width: 900px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 100px auto;
+}
+
+header {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#title {
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+}
+
+main {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px 20px 0px 20px;
+    box-sizing: border-box;
+}
+
+input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background-color: #eee;
+    border: 1px solid #eee;
+    padding: 8px 4px;
+    outline: none;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #AFAFAF;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #AFAFAF;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #AFAFAF;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #AFAFAF;
+}
+
+input[type="text"] {
+    font-size: 14px;
+    color: #000;
+}
+
+input[type='text']:focus {
+    border-color: #000;
+}
+
+input[type="button"] {
+    margin: 10px 0;
+}
+
+input[type="button"]:hover {
+    cursor: pointer;
+}
+
+input[type="button"]:active {
+    border-color: #000;
+}
+
+input[type="button"]:focus {
+    border-color: #000;
+}
+
+.flex {
+    margin: 5px 0;
+    font-size: 0px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item {
+    width: 200px;
+    height: 200px;
+    border: 1px solid #eee;
+    display: inline-block;
+}

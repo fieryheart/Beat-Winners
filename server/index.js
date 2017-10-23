@@ -23,6 +23,11 @@ class GameController {
         ctx.body = content;
     }
 
+    // 添加弹幕
+    static async pushDanmaku(ctx, next) {
+        let data = ctx.params;
+        console.log(data);
+    }
 
 }
 

@@ -1,9 +1,9 @@
-import "../images/clouds.png";
-import "../images/sun.png";
-import "../images/player.png";
-import "../images/start.png";
-import "../assets/fonts/gem.png";
-import "../assets/fonts/gem.xml";
+import "../../images/clouds.png";
+import "../../images/sun.png";
+import "../../images/player.png";
+import "../../images/start.png";
+import "../../assets/fonts/gem.png";
+import "../../assets/fonts/gem.xml";
 
 const devURL = "http://127.0.0.1:8080/build/";
 

@@ -1,4 +1,4 @@
-import '../css/style.css';
+import '../../css/style.css';
 import  {displayScale} from './screen.js';
 import States from './states.js';
 

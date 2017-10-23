@@ -5,11 +5,14 @@ module.exports = {
 	devtool: false,
 	entry: {
 		bundle:[
-			`${__dirname}/public/js/main.js`
+			`${__dirname}/public/js/index/main.js`
 		],
 		vendor:[
 			`${__dirname}/lib/pixi.min.js`,
 			`${__dirname}/lib/phaser.min.js`
+		],
+		dStore:[
+			`${__dirname}/public/js/dStore/main.js`
 		]
 	},
 	output: {

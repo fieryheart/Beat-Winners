@@ -21,7 +21,13 @@ router.get('/', async (ctx, next) => {
 	await ctx.render('index');
 });
 
+router.get('/dStore', async (ctx, next) => {
+	await ctx.render('dStore');
+})
+
 router.get('/getDanmaku', GameController.getDanmaku);
+
+router.post('/pushDanmaku', GameController.pushDanmaku);
 
 app.use(router.routes());
 
