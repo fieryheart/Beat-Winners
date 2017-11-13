@@ -110,15 +110,23 @@ export default function(game) {
           
           let danmakus = JSON.parse(val);
 
-          danmakus.forEach(function(d, i){
-            danmakus[i].position = {
-              x: d.positionX,
-              y: d.positionY
-            };
-            danmakus[i].velocity = {
-              x: d.velocityX,
-              y: d.velocityY
+          /*
+            弹幕格式
+            {
+              id:,
+              content:,
+              time:,
+              fill:,
+              date:,
+              nickname:,
+              alive:,
+              p:
             }
+          */
+
+          danmakus.forEach(function(d, i){
+            danmakus[i].position = Number(d.p);
+            danmakus[i].velocity = ga.w/ Number(d.alive);
           })
           
           // 填充弹幕组
@@ -181,15 +189,15 @@ export default function(game) {
     // 将弹幕放入游戏中
     function popDanmaku(t) {
         dMap[t-1].forEach(function(d){
-          let {id, content, position, velocity, collideWorldBounds, fill} = d;
-          let ds = ctx.add.text(position.x, position.y, content, {"fill": fill});
+          let {id, content, position, velocity, fill} = d;
+          let ds = ctx.add.text(ga.w, position, content, {"fill": fill});
           ds.anchor.set(.5);
           game.physics.enable(ds, Phaser.Physics.ARCADE);
           ds.position.x = ga.w + ds.width/2;
           // ds.body.collideWorldBounds = collideWorldBounds;
           ds.checkWorldBounds = true;
           ds.outOfBoundsKill = true;
-          ds.body.velocity.set(velocity.x, 0);
+          ds.body.velocity.set(-velocity, 0);
           ds.body.bounce.set(1);
           dGroup.add(ds);
         })

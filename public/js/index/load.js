@@ -1,5 +1,5 @@
 import {circlePoints} from './points.js';
-import _ from './utils.js';
+import _ from '../utils/utils.js';
 import {drawLine} from './draw.js';
 
 
@@ -7,13 +7,14 @@ export default function(game){
     const ctx = this;
     // const map = _.map;
     // const curry = _.curry;
-    // const flowRight = _.flowRight;
+    // const compose = _.compose;
     // const reduce = _.reduce;
     // const getKey = _.getKey;
+
     const {
         map,
         curry,
-        flowRight,
+        compose,
         reduce,
         getKey,
         add,
@@ -21,7 +22,7 @@ export default function(game){
         machine
     } = _
     
-
+    
     const load = {
         progress: 0,    // 每一圈的进度数
         graphics: {},   // 画板
@@ -103,13 +104,13 @@ export default function(game){
 
 
         // 所有的外圈点和内圈点
-        let outCirclePoints = flowRight(_.reduceDimension, map(getOutCircle))(circles);
-        let inCirclePoints = flowRight(_.reduceDimension, map(getInCircle))(circles);
+        let outCirclePoints = compose(_.reduceArray, map(getOutCircle))(circles);
+        let inCirclePoints = compose(_.reduceArray, map(getInCircle))(circles);
 
 
         let fromZero = reduce(0);               // 从零开始
         let addFromZero = fromZero(add);        // 从零开始加
-        let allBlocks = flowRight(addFromZero, filterKey('blocks'))(circles);   // 获取进度总数
+        let allBlocks = compose(addFromZero, filterKey('blocks'))(circles);   // 获取进度总数
         
         // 有待改进
         // 函数式构造一整个动画

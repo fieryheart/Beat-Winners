@@ -1,7 +1,7 @@
 /*
   绘图函数
 */
-import _ from './utils.js';
+import _ from '../utils/utils.js';
 
 const {
     curry

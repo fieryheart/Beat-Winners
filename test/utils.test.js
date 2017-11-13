@@ -1,4 +1,4 @@
-import _ from "../public/js/index/utils.js";
+import _ from "../public/js/utils/utils.js";
 import whatwg from 'whatwg-fetch';
 const chai = require('chai');
 const expect = chai.expect;

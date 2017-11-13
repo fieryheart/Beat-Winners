@@ -11,15 +11,20 @@
     <section>
         <header><p id="title">Welcome to Danmaku Store</p></header>
         <main>
+            <div id="status">
+                    <div id="preview">213</div>
+            </div>
             <form action="">
-                <input type="text" placeholder="你的昵称=_^"/>
-                <input type="text" placeholder="你的弹幕^_="/>
-                <ul class="flex">
-                    <li class="item"><img src="" alt=""></li>
-                    <li class="item"><img src="" alt=""></li>
-                    <li class="item"><img src="" alt=""></li>
+                <ul class="flex space-between">
+                    <input type="text" class="col1" name="nickname" placeholder="你的昵称=_^"/>
+                    <input type="text" class="col1" name="content" placeholder="你的弹幕^_="/>
+ 
+                    <input type="text" class="col2" name="position" placeholder="出现位置(0~540)"/>
+                    <input type="text" class="col2" name="time" placeholder="出现时间(0~50)(^_−)☆"/>
+                    <input type="text" class="col2" name="alive" placeholder="存活时间(0~10)(^_−)||"/>
+                    <input type="text" class="col2" name="fontSize" placeholder="弹幕大小(1~20) ▄︻┻┳══━一">
                 </ul>
-                <input type="button" class="" id="btn" value="提交"/>
+                <input type="button" class="" id="submit" value="提交"/>
             </form>
         </main>
     </section>

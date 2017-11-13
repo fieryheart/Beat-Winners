@@ -30,4 +30,5 @@ app.state.add('play', states.play);
 // app.state.start('menu');
 app.state.start('play');
 
+console.log(game);
 console.log('%cinit!','background:#fff;color:#0000ff');

@@ -24,11 +24,24 @@ class GameController {
     }
 
     // 添加弹幕
-    static async pushDanmaku(ctx, next) {
-        let data = ctx.params;
+    static async postDanmaku(ctx, next) {
+        let data = ctx.request.body;
+        ctx.status = 200;
+        ctx.type = "text/plain;charset=utf-8";
+        ctx.body = {status: "success"};
         console.log(data);
     }
 
+    static async getInputLimit(ctx, next) {
+        let content;
+        await queryDatabase('select * from inputLimit').then((data) => {
+            content = data;
+        })
+
+        ctx.status = 200;
+        ctx.type = 'text/plain; charset=utf-8';
+        ctx.body = content;
+    }
 }
 
 function queryDatabase(query) {

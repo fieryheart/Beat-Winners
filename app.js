@@ -3,7 +3,9 @@
 const Koa = require('koa');
 const router = require('koa-router')();
 const views = require('koa-views');
+const koaBody = require('koa-body');
 const GameController = require('./server/index.js');
+
 
 //
 const app = new Koa();
@@ -21,13 +23,17 @@ router.get('/', async (ctx, next) => {
 	await ctx.render('index');
 });
 
-router.get('/dStore', async (ctx, next) => {
+router.get('/dStore.html', async (ctx, next) => {
 	await ctx.render('dStore');
 })
 
 router.get('/getDanmaku', GameController.getDanmaku);
 
-router.post('/pushDanmaku', GameController.pushDanmaku);
+router.get('/getInputLimit', GameController.getInputLimit);
+
+router.post('/postDanmaku', koaBody(), GameController.postDanmaku);
+
+
 
 app.use(router.routes());
 

@@ -70,11 +70,11 @@
 
 import 'whatwg-fetch';
 
-const URL = 'http://127.0.0.1:3000';
+const URL = 'http://127.0.0.1:3000/';
 
 export default {
     getDanmaku: function() {
-        return fetch(URL + '/getDanmaku', {
+        return fetch(URL + 'getDanmaku', {
             method: 'GET',
             headers: {
                 "Content-Type": "text/plain"

@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/fieryheart/BeatWinners#readme",
   "dependencies": {
+    "jquery": "^3.2.1",
     "koa": "^2.2.0",
+    "koa-body": "^2.5.0",
     "koa-router": "^7.2.1",
     "koa-views": "^6.0.2",
     "webpack": "^3.6.0",
